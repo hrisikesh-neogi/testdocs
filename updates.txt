@@ -1,0 +1,30 @@
+Project Familiarization and Code Review
+•	Reviewed and analyzed the ITIP ECC RAG project codebase.
+•	Identified key modules, dependencies, and architectural patterns.
+•	Documented insights and potential areas for optimization or refactoring.
+Azure Functions Setup and Configuration
+•	Established the project environment using Azure Functions.
+•	Configured local development settings and ensured alignment with cloud deployment standards.
+•	Studied Azure Functions documentation and best practices to streamline function execution and scaling.
+Function App Deployment and Testing
+•	Successfully ran the Azure Function App locally.
+•	Utilized Postman to perform API testing, verifying endpoints and response formats.
+
+Azure SearchClient Troubleshooting and Resolution
+•	Encountered setup challenges with the Azure SearchClient during the initial configuration.
+•	Investigated the issue through documentation and community forums.
+•	Applied configuration adjustments and resolved compatibility issues to integrate the Azure SearchClient seamlessly into the project.
+•	Documented the resolution steps for future reference and team collaboration.
+
+Enhanced Debugging and Process Understanding
+•	Integrated multiple print functions into the code to gain deeper insights into underlying processes.
+•	Leveraged VSCode debugging tools to step through code execution, identify issues, and validate process flows.
+•	Documented key findings and areas for further optimization based on real-time debugging insights.
+
+Research and Skill Enhancement
+•	Deepened understanding of Azure Functions and the underlying serverless architecture.
+•	Explored additional resources and case studies to leverage the Azure SearchClient effectively.
+
+Thanks
+Hrisikesh
+
