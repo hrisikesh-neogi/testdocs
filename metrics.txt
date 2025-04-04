@@ -1,0 +1,94 @@
+# Reference-Based Evaluation Metrics: BLEU, ROUGE, and JS Divergence
+
+## Introduction
+Reference-based evaluation metrics compare machine-generated text against human-written references to assess quality. These metrics are essential for evaluating machine translation, summarization, text generation, and other NLP tasks.
+
+## BLEU (Bilingual Evaluation Understudy)
+
+### Required Inputs
+- **Candidate text**: The machine-generated output to be evaluated
+- **Reference text(s)**: One or more human-written reference translations/texts
+- **N-gram order**: Usually configured for 1-4 grams (BLEU-1, BLEU-2, BLEU-3, BLEU-4)
+
+### How It Works
+BLEU measures the precision of n-grams in the candidate text compared to reference text(s), with a brevity penalty for short translations. The score ranges from 0 to 1, where higher values indicate better alignment with references.
+
+### Utilization
+- **Machine Translation Evaluation**: Primary use case for comparing translated text against reference translations
+- **Text Generation Quality**: Evaluating text generation models by comparing with reference outputs
+- **Model Comparison**: Benchmarking different models against the same reference set
+- **Optimization**: Used in model training loops to optimize generation quality
+
+### Key Considerations
+- Multiple references improve evaluation reliability
+- Most effective for tasks with limited variation in correct outputs
+- More reliable when used to compare systems rather than as an absolute quality measure
+
+## ROUGE (Recall-Oriented Understudy for Gisting Evaluation)
+
+### Required Inputs
+- **Candidate text**: The machine-generated summary/text
+- **Reference text(s)**: One or more human-written reference summaries/texts
+- **Variant selection**: ROUGE-N (n-gram), ROUGE-L (longest common subsequence), ROUGE-S (skip-bigrams)
+
+### How It Works
+ROUGE focuses on recall (how much of the reference appears in the candidate), with variants that capture different aspects of text similarity:
+- ROUGE-N: N-gram overlap (ROUGE-1, ROUGE-2 most common)
+- ROUGE-L: Longest common subsequence
+- ROUGE-S: Skip-bigram co-occurrence
+
+### Utilization
+- **Summarization Evaluation**: Primary application for evaluating text summaries
+- **Content Coverage Assessment**: Measuring how well generated text covers key information
+- **Headline Generation**: Evaluating headline quality against reference headlines
+- **Dialogue Response Evaluation**: Assessing response relevance in conversational systems
+
+### Key Considerations
+- ROUGE-1 measures word overlap; ROUGE-2 captures fluency better
+- ROUGE-L useful for capturing sentence structure without strict word order
+- F1 scores (combining precision and recall) provide balanced measurement
+
+## JS Divergence (Jensen-Shannon Divergence)
+
+### Required Inputs
+- **Candidate distribution**: Probability distribution from generated text (often term frequency)
+- **Reference distribution**: Probability distribution from reference text
+- **Base**: Usually 2 (binary logarithm) or e (natural logarithm)
+
+### How It Works
+JS divergence measures the similarity between two probability distributions, based on KL divergence but symmetrized and smoothed. It ranges from 0 (identical distributions) to 1 (completely different).
+
+### Utilization
+- **Semantic Similarity**: Evaluating how well the meaning of generated text matches references
+- **Stylistic Consistency**: Measuring if generated text maintains similar distribution characteristics
+- **Topic Adherence**: Assessing if a generated text stays on the same topic as the reference
+- **Distribution Matching**: Evaluating if generated text maintains statistical properties of references
+
+### Key Considerations
+- More robust to vocabulary mismatches than exact n-gram metrics
+- Can capture higher-level distribution similarities even with different phrasing
+- Requires converting texts to probability distributions (usually term frequencies)
+- Less sensitive to exact wording, more to overall content distribution
+
+## Practical Implementation Tips
+
+### When to Use Each Metric
+- **BLEU**: When exact phrasing and word choice matters (translation, highly constrained generation)
+- **ROUGE**: When content coverage and information retention are priorities (summarization)
+- **JS Divergence**: When semantic similarity and distribution matching matter more than exact wording
+
+### Combined Approaches
+- Use multiple metrics together for more comprehensive evaluation
+- BLEU+ROUGE provides both precision and recall perspectives
+- Complement with human evaluation for high-stakes applications
+
+### Automating Evaluation
+- Libraries like NLTK, SacreBLEU, and PyRouge provide standardized implementations
+- Set up evaluation pipelines to consistently track metrics across model iterations
+- Create visualizations that track metrics over time or across different model variants
+
+## Limitations and Considerations
+- All reference-based metrics require high-quality references
+- May not capture semantic adequacy or fluency fully
+- Performance can be misleading without proper preprocessing standardization
+- Multiple references improve reliability but increase annotation costs
